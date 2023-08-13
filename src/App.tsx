@@ -59,18 +59,42 @@ const DOCUMENTS: any = {
       link: 'https://docs.base.org/tools/node-providers',
     },
     {
-      title: 'Run base node with docker',
+      title: 'Run a base node with docker',
       link: 'https://docs.base.org/guides/run-a-base-node'
+    },
+    {
+      title: 'Network Information',
+      link: 'https://docs.base.org/network-information'
+    },
+    {
+      title: 'Network Faucets',
+      link: 'https://docs.base.org/tools/network-faucets'
+    },
+    {
+      title: 'Base Contracts',
+      link: 'https://docs.base.org/base-contracts'
+    },
+    {
+      title: 'Base Bridges',
+      link: 'https://docs.base.org/tools/bridges'
+    },
+    {
+      title: 'Base Fees',
+      link: 'https://docs.base.org/fees'
+    },
+    {
+      title: 'Chainlink Oracle',
+      link: 'https://docs.base.org/tools/chainlink'
+    },
+    {
+      title: 'LayerZero',
+      link: 'https://docs.base.org/tools/layerzero'
     },
   ],
   'Zora': [
     {
       title: 'Network Details',
       link: 'https://docs.zora.co/docs/zora-network/network',
-    },
-    {
-      title: 'Connecting MetaMask',
-      link: 'https://docs.zora.co/docs/zora-network/metamask',
     },
     {
       title: 'Bridging',
