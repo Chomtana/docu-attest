@@ -1,27 +1,13 @@
 # DocuAttest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+We have built an attestation website for developers and the general public to attest their read status and improved base documentation on how to run node and attestation.
 
-Currently, two official plugins are available:
+We also allow the user to share their attested document to their Twitter to invite other developers or users to read. Greatly increase the viral impact of the document.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The base document that I have written is available at https://gist.github.com/Chomtana/648a0a2afd2f78d78e49a18e71c98727
 
-## Expanding the ESLint configuration
+Base document that I have written compose of
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+How to run base node from scratch
+How attestation on base works
+You can try our complete product at https://docu-attest.chom.dev
