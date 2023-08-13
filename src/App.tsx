@@ -9,21 +9,49 @@ import AttestButton from './AttestButton'
 const DOCUMENTS: any = {
   'Optimism': [
     {
+      title: 'Quick Start',
+      link: 'https://community.optimism.io/docs/guides/',
+    },
+    {
+      title: 'Networks, Public RPC Endpoints, & APIs',
+      link: 'https://community.optimism.io/docs/useful-tools/networks/',
+    },
+    {
+      title: 'Network Faucets',
+      link: 'https://community.optimism.io/docs/useful-tools/faucets/',
+    },
+    {
       title: 'Bridging basic',
       link: 'https://community.optimism.io/docs/developers/bridge/basics/',
     },
     {
+      title: 'RetroPGF 2 Project Discovery',
+      link: 'https://app.optimism.io/retropgf-discovery',
+    },
+    {
+      title: 'RetroPGF 3 Announcement',
+      link: 'https://optimism.mirror.xyz/oVnEz7LrfeOTC7H6xCXb5dMZ8Rc4dSkD2KfgG5W9cCw',
+    },
+    {
+      title: 'Running a local development environment',
+      link: 'https://community.optimism.io/docs/developers/build/dev-node/#',
+    },
+    {
+      title: 'Running an OP Mainnet or testnet node',
+      link: 'https://community.optimism.io/docs/developers/build/run-a-node/',
+    },
+    {
       title: 'Getting started OP stack',
       link: 'https://stack.optimism.io/docs/build/getting-started/#configure-your-network',
-    }
+    },
+    {
+      title: 'The OP Stack Client SDK',
+      link: 'https://community.optimism.io/docs/sdk/js-client/',
+    },
   ],
   'Base': [
     {
       title: 'How to run a base node without docker',
-      link: 'https://gist.github.com/Chomtana/648a0a2afd2f78d78e49a18e71c98727',
-    },
-    {
-      title: 'Base attestation',
       link: 'https://gist.github.com/Chomtana/648a0a2afd2f78d78e49a18e71c98727',
     },
     {
@@ -37,14 +65,66 @@ const DOCUMENTS: any = {
   ],
   'Zora': [
     {
-      title: '',
-      link: '',
-    }
+      title: 'Network Details',
+      link: 'https://docs.zora.co/docs/zora-network/network',
+    },
+    {
+      title: 'Connecting MetaMask',
+      link: 'https://docs.zora.co/docs/zora-network/metamask',
+    },
+    {
+      title: 'Bridging',
+      link: 'https://docs.zora.co/docs/zora-network/bridging',
+    },
+    {
+      title: 'Creating an ERC1155 Contract',
+      link: 'https://docs.zora.co/docs/smart-contracts/creator-tools/Deploy1155Contract',
+    },
+    {
+      title: 'Creating an ERC1155 Token',
+      link: 'https://docs.zora.co/docs/smart-contracts/creator-tools/Creating1155Token',
+    },
+    {
+      title: 'Selling an ERC1155 Token',
+      link: 'https://docs.zora.co/docs/smart-contracts/creator-tools/Selling1155',
+    },
+    {
+      title: 'Minting an ERC1155 Token',
+      link: 'https://docs.zora.co/docs/smart-contracts/creator-tools/Minting1155',
+    },
+    {
+      title: 'Zora NFT Creator',
+      link: 'https://docs.zora.co/docs/smart-contracts/creator-tools/ZoraNFTCreator',
+    },
+    {
+      title: 'ERC721 Drop',
+      link: 'https://docs.zora.co/docs/smart-contracts/creator-tools/ERC721Drop',
+    },
+    {
+      title: 'Deploying Contracts',
+      link: 'https://docs.zora.co/docs/zora-network/contracts',
+    },
+    {
+      title: 'Deployed Contracts',
+      link: 'https://docs.zora.co/docs/zora-network/deployments',
+    },
   ],
   'Mode': [
     {
-      title: '',
-      link: '',
+      title: 'How to setup the Mode Testnet in Metamask',
+      link: 'https://docs.mode.network/get-started/using-mode',
+    },
+    {
+      title: 'Bridging to Mode Testnet',
+      link: 'https://docs.mode.network/get-started/bridging-to-mode-testnet',
+    },
+    {
+      title: 'Deploy a smart contract with Thirdweb',
+      link: 'https://docs.mode.network/build-on-mode/guides/deploying-a-smart-contract/using-thirdweb',
+    },
+    {
+      title: 'Testnet Faucets',
+      link: 'https://docs.mode.network/tools/testnet-faucets',
     }
   ]
 }
@@ -72,8 +152,8 @@ function App() {
         <div className='mt-6'>
           <div className='text-2xl'>{activeChain}</div>
 
-          {DOCUMENTS[activeChain].map((doc: any) => (
-            <div className='p-4 flex flex-col md:flex-row justify-between shadow rounded mb-3 items-center'>
+          {DOCUMENTS[activeChain].map((doc: any, i: number) => (
+            <div className='p-4 flex flex-col md:flex-row justify-between shadow rounded mb-3 items-center' key={activeChain + i}>
               <div className='text-lg my-1'>
                 {doc.title}
               </div>

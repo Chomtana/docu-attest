@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useAccount, useContractWrite, usePublicClient } from "wagmi";
+import { useAccount, useContractWrite, useNetwork, usePublicClient, useSwitchNetwork } from "wagmi";
 import EASABI from "./EAS.json"
 import { encodeAbiParameters, parseAbiParameters } from "viem";
 
@@ -9,15 +9,17 @@ export default function AttestButton({ link, chainName }: { link: string, chainN
   const publicClient = usePublicClient();
 
   const { address } = useAccount();
+  const { chain } = useNetwork();
+  const { switchNetworkAsync } = useSwitchNetwork()
 
   let chainId: number = 420;
   let EASContractAddress: `0x${string}` = '0x4200000000000000000000000000000000000021'
 
   switch (chainName) {
     case 'Optimism': chainId = 420; break;
-    case 'Base': chainId = 84531; EASContractAddress = '0x4200000000000000000000000000000000000021'; break;
-    case 'Zora': chainId = 999; EASContractAddress = '0x4200000000000000000000000000000000000021'; break;
-    case 'Mode': chainId = 919; EASContractAddress = '0x4200000000000000000000000000000000000021'; break;
+    case 'Base': chainId = 84531; EASContractAddress = '0xAcfE09Fd03f7812F022FBf636700AdEA18Fd2A7A'; break;
+    case 'Zora': chainId = 999; EASContractAddress = '0xAb7659Bea77c619D3f2CecfE829c924ea24Eca16'; break;
+    case 'Mode': chainId = 919; EASContractAddress = '0xAb7659Bea77c619D3f2CecfE829c924ea24Eca16'; break;
   }
 
   const [ isLoading, setIsLoading ] = useState(false)
@@ -36,6 +38,13 @@ export default function AttestButton({ link, chainName }: { link: string, chainN
       onClick={async () => {
         try {
           setIsLoading(true)
+
+          if (chain?.id != chainId) {
+            if (switchNetworkAsync) {
+              await switchNetworkAsync(chainId);
+            }
+          }
+
           const tx = await writeAsync({
             args: [
               {
@@ -55,7 +64,7 @@ export default function AttestButton({ link, chainName }: { link: string, chainN
             ]
           })
 
-          await publicClient.waitForTransactionReceipt({ hash: tx.hash })
+          // await publicClient.waitForTransactionReceipt({ hash: tx.hash })
 
           window.alert("Attested successfully tx hash: " + tx.hash)
         } catch (err: any) {
