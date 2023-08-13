@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import ShareButton from './ShareButton'
+import AttestButton from './AttestButton'
 
 const DOCUMENTS: any = {
   'Optimism': [
@@ -32,6 +34,18 @@ const DOCUMENTS: any = {
       title: 'Run base node with docker',
       link: 'https://docs.base.org/guides/run-a-base-node'
     },
+  ],
+  'Zora': [
+    {
+      title: '',
+      link: '',
+    }
+  ],
+  'Mode': [
+    {
+      title: '',
+      link: '',
+    }
   ]
 }
 
@@ -40,8 +54,8 @@ function App() {
 
   return (
     <>
-      <div className='flex justify-between'>
-        <div>DocuAttest</div>
+      <div className='flex justify-between items-center'>
+        <div className='flex items-center text-xl'><img src="/logo.png" style={{height: 32}} className='mr-2'></img> DocuAttest</div>
         <div>
           <ConnectButton />
         </div>
@@ -49,13 +63,13 @@ function App() {
 
       <div className='mt-6'>
         <div className='flex justify-center'>
-          <div className={'px-4 py-2 bg-white shadow rounded hover:cursor-pointer hover:bg-gray-100 transition ' + (activeChain == 'Optimism' ? 'bg-gray-200' : '')} onClick={() => setActiveChain('Optimism')}>Optimism</div>
-          <div className={'px-4 py-2 bg-white shadow rounded hover:cursor-pointer hover:bg-gray-100 transition ' + (activeChain == 'Base' ? 'bg-gray-200' : '')} onClick={() => setActiveChain('Base')}>Base</div>
-          <div className={'px-4 py-2 bg-white shadow rounded hover:cursor-pointer hover:bg-gray-100 transition ' + (activeChain == 'Zora' ? 'bg-gray-200' : '')} onClick={() => setActiveChain('Zora')}>Zora</div>
-          <div className={'px-4 py-2 bg-white shadow rounded hover:cursor-pointer hover:bg-gray-100 transition ' + (activeChain == 'Mode' ? 'bg-gray-200' : '')} onClick={() => setActiveChain('Mode')}>Mode</div>
+          <div className={'px-4 py-2 shadow rounded hover:cursor-pointer hover:bg-gray-100 transition ' + (activeChain == 'Optimism' ? 'bg-amber-100' : 'bg-white')} onClick={() => setActiveChain('Optimism')}>Optimism</div>
+          <div className={'px-4 py-2 shadow rounded hover:cursor-pointer hover:bg-gray-100 transition ' + (activeChain == 'Base' ? 'bg-amber-100' : 'bg-white')} onClick={() => setActiveChain('Base')}>Base</div>
+          <div className={'px-4 py-2 shadow rounded hover:cursor-pointer hover:bg-gray-100 transition ' + (activeChain == 'Zora' ? 'bg-amber-100' : 'bg-white')} onClick={() => setActiveChain('Zora')}>Zora</div>
+          <div className={'px-4 py-2 shadow rounded hover:cursor-pointer hover:bg-gray-100 transition ' + (activeChain == 'Mode' ? 'bg-amber-100' : 'bg-white')} onClick={() => setActiveChain('Mode')}>Mode</div>
         </div>
 
-        <div className='mt-4'>
+        <div className='mt-6'>
           <div className='text-2xl'>{activeChain}</div>
 
           {DOCUMENTS[activeChain].map((doc: any) => (
@@ -65,8 +79,12 @@ function App() {
               </div>
 
               <div>
-                <button className='px-4 bg-blue-600 text-white rounded py-1 mr-3 hover:bg-blue-500 hover:cursor-pointer' onClick={() => window.open(doc.link)}>Read</button>
-                <button className='px-4 bg-blue-600 text-white rounded py-1 mr-3 hover:bg-blue-500 hover:cursor-pointer'>Attest</button>
+                <a href={doc.link} target="_blank">
+                  <button className='px-4 bg-blue-600 text-white rounded py-1 mr-3 hover:bg-blue-500 hover:cursor-pointer' onClick={() => window.open(doc.link)}>Read</button>
+                </a>
+                
+                <ShareButton title={doc.title} link={doc.link} chainName={activeChain} />
+                <AttestButton link={doc.link} chainName={activeChain} />
               </div>
             </div>
           ))}
