@@ -73,8 +73,8 @@ function App() {
           <div className='text-2xl'>{activeChain}</div>
 
           {DOCUMENTS[activeChain].map((doc: any) => (
-            <div className='p-4 flex justify-between shadow rounded mb-3'>
-              <div className='text-lg'>
+            <div className='p-4 flex flex-col md:flex-row justify-between shadow rounded mb-3 items-center'>
+              <div className='text-lg my-1'>
                 {doc.title}
               </div>
 
